@@ -16,6 +16,7 @@ export class Target {
         return this.stat;
     }
 }
+
 Target.prototype.toString = ()=>{
     throw new Error("Abstract method");
 };

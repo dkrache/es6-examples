@@ -1,3 +1,5 @@
+import {Command} from "./Command";
+
 export class FireSpell extends Command {
 
     constructor() {
@@ -6,26 +8,24 @@ export class FireSpell extends Command {
         this.oldHitPoint = undefined;
     }
 
-    execute(commander, target){
+    execute(commander, target) {
         this.target = target;
-
-        this.oldHitPoint=this.target.getStat().getVitality();
-        var damage = target.getStat().getDefense() - commander.getStat().getMagic()+10;
+        this.oldHitPoint=this.target.stat.vitality;
+        var damage = commander.stat.magic+10;
         damage = Math.max(damage,1);
-        this.target.getStat().setVitality(this.oldHitPoint-damage);
-
+        this.target.stat.vitality = this.target.stat.vitality-damage;
     }
 
     undo() {
         if (this.target != null) {
-            var temp = this.target.getStat().getVitality()
-            this.target.getStat().setVitality(this.oldHitPoint);
+            var temp = this.target.stat.vitality
+            this.target.stat.vitality = this.oldHitPoint;
             this.oldHitPoint = temp;
         }
     }
 
     redo() {
-        undo();
+        this.undo();
     }
 
     toString() {

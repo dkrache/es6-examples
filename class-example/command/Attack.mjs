@@ -1,3 +1,5 @@
+import {Command} from "./Command";
+
 export class Attack extends Command {
 
     constructor() {
@@ -8,28 +10,26 @@ export class Attack extends Command {
 
     execute(commander, target){
         this.target = target;
-
-        this.oldHitPoint=this.target.getStat().getVitality();
-        var damage = target.getStat().getDefense() - commander.getStat().getAttack()+10;
+        this.oldHitPoint=this.target.stat.vitality;
+        var damage = commander.stat.attack+10;
         damage = Math.max(damage,1);
-        this.target.getStat().setVitality(this.oldHitPoint-damage);
-
+        this.target.stat.vitality = this.target.stat.vitality-damage;
     }
 
     undo() {
         if (this.target != null) {
-            var temp = this.target.getStat().getVitality()
-            this.target.getStat().setVitality(this.oldHitPoint);
+            var temp = this.target.stat.vitality;
+            this.target.stat.vitality = this.oldHitPoint;
             this.oldHitPoint = temp;
         }
     }
 
     redo() {
-        undo();
+        this.undo();
     }
 
     toString() {
-        return "fire spell";
+        return "attack";
     }
 }
 

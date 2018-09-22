@@ -1,9 +1,9 @@
 import {Target} from "./Target";
 
 export class Commander extends Target {
-    constructor( stat) {
+    constructor(stat) {
         super(stat);
-        if(this.constructor===Commander) {
+        if (this.constructor === Commander) {
             throw new Error("Cannot instantiate class Commander");
         }
         this.undoStack = [];
@@ -20,7 +20,7 @@ export class Commander extends Target {
 
     undo() {
         let command = this.undoStack.pop();
-        if(command){
+        if (command) {
             this.redoStack.push(command);
             command.undo();
         }
@@ -28,7 +28,7 @@ export class Commander extends Target {
 
     redo() {
         let command = this.redoStack.pop();
-        if(command){
+        if (command) {
             this.undoStack.push(command);
             command.redo();
         }

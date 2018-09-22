@@ -1,12 +1,12 @@
 export class Command {
 
     constructor() {
-        if(this.constructor === Command ){
+        if (this.constructor === Command) {
             throw new Error("Cannot instantiate Command");
         }
     }
 
-    execute(){
+    execute() {
         throw new Error("Implements execute")
     }
 
