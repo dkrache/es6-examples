@@ -1,33 +1,32 @@
 export class Stat {
     constructor(vitality, attack, defense, magic, blockRate) {
-        this.vitality = vitality;
-        this.attack = attack;
-        this.defense = defense;
-        this.magic = magic;
-        this.blockRate = blockRate;
+        this._vitality = vitality,
+        this._attack = attack;
+        this._defense = defense;
+        this._magic = magic;
+        this._blockRate = blockRate;
     }
 
-    get getVitality() {
-        return this.vitality;
+    get vitality() {
+        console.log("fuuuck");
+        return this._attack;
+    }
+    get attack() {
+        console.log("fuuuck");
+        return this._attack;
+    }
+    get defense() {
+        console.log("fuuuck");
+        return this._defense;
+    }
+    get magic() {
+        console.log("fuuuck");
+        return this._magic;
+    }
+    get blockRate() {
+        console.log("fuuuck");
+        return this._blockRate;
     }
 
-    set setVitality(vitality) {
-        this.vitality = vitality;
-    }
 
-    get getAttack() {
-        return this.attack;
-    }
-
-    get getDefense() {
-        return this.defense;
-    }
-
-    get getMagic() {
-        return this.magic;
-    }
-
-    get getBlockRate() {
-        return this.blockRate;
-    }
 }
